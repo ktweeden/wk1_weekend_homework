@@ -7,7 +7,7 @@ def total_cash(shop)
 end
 
 def add_or_remove_cash(shop, amount)
-  return shop[:admin][:total_cash] += amount
+  shop[:admin][:total_cash] += amount
 end
 
 def pets_sold(shop)
@@ -15,7 +15,7 @@ def pets_sold(shop)
 end
 
 def increase_pets_sold(shop, amount)
-  return shop[:admin][:pets_sold] += amount
+  shop[:admin][:pets_sold] += amount
 end
 
 def stock_count(shop)
@@ -61,8 +61,7 @@ end
 # # OPTIONAL
 
 def customer_can_afford_pet(customer, pet)
-  return true if customer[:cash]>=pet[:price]
-  return false
+  return customer[:cash]>=pet[:price]
 end
 
 def sell_pet_to_customer(shop, pet, customer)
