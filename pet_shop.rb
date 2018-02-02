@@ -67,19 +67,11 @@ end
 
 def sell_pet_to_customer(shop, pet, customer)
   return if pet == nil
-  price = 0
-  new_pet = nil
-  for shop_pet in shop[:pets]
-    if shop_pet[:name] == pet[:name]
-      price = pet[:price]
-      new_pet = pet
-    end
-  end
-  if new_pet && customer[:cash] > price
+  if customer[:cash] > pet[:price]
     customer[:pets].push(pet)
-    customer[:cash] -= price
-    shop[:admin][:total_cash] += price
-    remove_pet_by_name(shop, new_pet[:name])
+    customer[:cash] -= pet[:price]
+    shop[:admin][:total_cash] += pet[:price]
+    remove_pet_by_name(shop, pet[:name])
     shop[:admin][:pets_sold] += 1
   end
 end
